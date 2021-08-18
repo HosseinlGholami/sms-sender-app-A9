@@ -52,17 +52,36 @@ sh: app/config.mk: unknown operand
 [MAKE]  app
 
 [CC]   app.o                       <== app.c
-src/app.c: In function 'UART_TestTask':
-src/app.c:184: error: 'network_stable' undeclared (first use in this function)
-src/app.c:184: error: (Each undeclared identifier is reported only once
-src/app.c:184: error: for each function it appears in.)
-C:/Users/hosse/OneDrive/Desktop/Geektori/platform/compilation/cust_rules.mk:1006: recipe for target 'C:/Users/hosse/OneDrive/Desktop/Geektori/build/app/app/obj/debug/app.o' failed
-make[4]: *** [C:/Users/hosse/OneDrive/Desktop/Geektori/build/app/app/obj/debug/app.o] Error 1
-C:/Users/hosse/OneDrive/Desktop/Geektori/platform/compilation/cust_rules.mk:835: recipe for target 'C:/Users/hosse/OneDrive/Desktop/Geektori/build/app/app/lib/libapp_debug.a' failed
-make[3]: *** [C:/Users/hosse/OneDrive/Desktop/Geektori/build/app/app/lib/libapp_debug.a] Error 2
-C:/Users/hosse/OneDrive/Desktop/Geektori/platform/compilation/cust_rules.mk:1031: recipe for target 'dependencies' failed
-make[2]: *** [dependencies] Error 2
-C:/Users/hosse/OneDrive/Desktop/Geektori/platform/compilation/cust_rules.mk:749: recipe for target 'C:/Users/hosse/OneDrive/Desktop/Geektori/build/app//app.srec' failed
-make[1]: *** [C:/Users/hosse/OneDrive/Desktop/Geektori/build/app//app.srec] Error 2
-C:/Users/hosse/OneDrive/Desktop/Geektori/platform/compilation/cust_rules.mk:396: recipe for target 'lod' failed
-make: *** [lod] Error 2
+[CC]   uart.o                      <== uart.c
+src/uart.c: In function 'uart_sender':
+src/uart.c:17: warning: implicit declaration of function 'sprintf'
+src/uart.c:17: warning: incompatible implicit declaration of built-in function 'sprintf'
+src/uart.c: In function 'uart_sender_int':
+src/uart.c:23: warning: incompatible implicit declaration of built-in function 'sprintf'
+[AR]   libapp_debug.a
+ 
+
+
+[MAKE]  app
+
+[AR]   libapp_debug.a
+ 
+
+
+-----------------------------------------------
+[LDGEN]             >>> cust.ld
+[LD] 1:C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app//app.elf 2:--oformat=elf32-littlemips 5:-just-symbols C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/platform/chip/rom/8955/lib/mem_bridge_rom_CHIP.elf 6: C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/cust.ld 7:--gc-sections  -LC:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/init/lib   -LC:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/libs/lib   -LC:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib   -LC:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib      --start-group   -linit_debug  -llibs_debug  -lapp_debug  -lapp_debug --end-group -LC:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/platform/lib/gcc/mips-elf/4.4.2 -lgcc  --warn-common  --error-unresolved-symbols  8:C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app//app.map  end1             app.elf
+[ElfCombine]        Elf binary & map file
+
+[GEN]               strip platform symbol
+                    |
+                     --C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/platform/compilation/platform_symbols_to_strip
+mips-elf-ld.exe: hex/app/app.elf: access beyond end of merged section (-99877536)
+
+[SREC]              app.srec for flash/romulator
+sh: app/config.mk: unknown operand
+[LOD]               C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/hex/app/app_flash.lod
+[LODCOMBINE]        Combine with Platform lod
+[LODCOMBINE]        Combine sucessful
+sh: app/config.mk: unknown operand
+

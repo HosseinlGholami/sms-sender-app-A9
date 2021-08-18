@@ -6,6 +6,15 @@
 #define TEST_TASK_PRIORITY      1
 
 
+typedef struct {
+    HANDLE mainTaskHandle;
+    HANDLE gpioTaskHandle;
+    HANDLE uartTaskHandle;
+    HANDLE smsTaskHandle;
 
-void uart_sender(char data []);
-void uart_sender_int(int data);
+}Task_Handels;
+
+void UART_TestTask(void* pData);
+
+// void uart_sender(char data []);
+// void uart_sender_int(int data);
