@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"api_os.h": "c",
+			"api_hal_gpio.h": "c",
+			"api_hal_pm.h": "c",
+			"api_info.h": "c",
+			"api_sim.h": "c",
+			"api_network.h": "c",
+			"api_fs.h": "c",
+			"stdint.h": "c"
+		}
+	}
+}

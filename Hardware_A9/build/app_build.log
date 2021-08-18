@@ -1,0 +1,68 @@
+sh: app/config.mk: unknown operand
+-- System Version : WINDOWS
+---------------------------------------------------
+sh: app/config.mk: unknown operand
+sh: app/config.mk: unknown operand
+
+
+[MAKE]  init
+
+[AR]   libinit_debug.a
+ 
+
+
+[MAKE]  libs
+
+
+[MAKE]  libs/gps
+
+
+[MAKE]  libs/gps/minmea
+
+[AR]   libminmea_debug.a
+ 
+
+[AR]   libgps_debug.a
+        |
+         -- libminmea_debug.a
+ 
+
+
+[MAKE]  libs/utils
+
+[AR]   libutils_debug.a
+ 
+
+
+[MAKE]  libs/cjson
+
+[AR]   libcjson_debug.a
+ 
+
+[AR]   liblibs_debug.a
+        |
+         -- libgps_debug.a
+        |
+         -- libutils_debug.a
+        |
+         -- libcjson_debug.a
+ 
+
+
+[MAKE]  app
+
+[CC]   app.o                       <== app.c
+src/app.c: In function 'UART_TestTask':
+src/app.c:184: error: 'network_stable' undeclared (first use in this function)
+src/app.c:184: error: (Each undeclared identifier is reported only once
+src/app.c:184: error: for each function it appears in.)
+C:/Users/hosse/OneDrive/Desktop/Geektori/platform/compilation/cust_rules.mk:1006: recipe for target 'C:/Users/hosse/OneDrive/Desktop/Geektori/build/app/app/obj/debug/app.o' failed
+make[4]: *** [C:/Users/hosse/OneDrive/Desktop/Geektori/build/app/app/obj/debug/app.o] Error 1
+C:/Users/hosse/OneDrive/Desktop/Geektori/platform/compilation/cust_rules.mk:835: recipe for target 'C:/Users/hosse/OneDrive/Desktop/Geektori/build/app/app/lib/libapp_debug.a' failed
+make[3]: *** [C:/Users/hosse/OneDrive/Desktop/Geektori/build/app/app/lib/libapp_debug.a] Error 2
+C:/Users/hosse/OneDrive/Desktop/Geektori/platform/compilation/cust_rules.mk:1031: recipe for target 'dependencies' failed
+make[2]: *** [dependencies] Error 2
+C:/Users/hosse/OneDrive/Desktop/Geektori/platform/compilation/cust_rules.mk:749: recipe for target 'C:/Users/hosse/OneDrive/Desktop/Geektori/build/app//app.srec' failed
+make[1]: *** [C:/Users/hosse/OneDrive/Desktop/Geektori/build/app//app.srec] Error 2
+C:/Users/hosse/OneDrive/Desktop/Geektori/platform/compilation/cust_rules.mk:396: recipe for target 'lod' failed
+make: *** [lod] Error 2
