@@ -4,13 +4,13 @@ def getSystemInfo():
     try:
         info={}
         info['platform']=platform.system()
-        info['platform-release']=platform.release()
-        info['platform-version']=platform.version()
-        info['architecture']=platform.machine()
-        info['hostname']=socket.gethostname()
-        info['ip-address']=socket.gethostbyname(socket.gethostname())
+        # info['platform-release']=platform.release()
+        # info['platform-version']=platform.version()
+        # info['architecture']=platform.machine()
+        info['name']=socket.gethostname()
+        # info['ip-address']=socket.gethostbyname(socket.gethostname())
         info['mac-address']=':'.join(re.findall('..', '%012x' % uuid.getnode()))
-        info['processor']=platform.processor()
+        # info['processor']=platform.processor()
         info['ram']=str(round(psutil.virtual_memory().total / (1024.0 **3)))+" GB"
         return json.dumps(info)
     except:
@@ -18,3 +18,5 @@ def getSystemInfo():
 
 a=json.loads(getSystemInfo())
 print(a)
+
+b='سلام بر شما عزیزان دلم که همواره در راستای اعتلای فردی دست به هنرمنمایی کرده و در این راه وقت صرف میکنید'

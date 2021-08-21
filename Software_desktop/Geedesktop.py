@@ -8,7 +8,7 @@ import queue
 from PyQt5 import QtWidgets,QtGui
 from PyQt5.QtCore import Qt
 import sys
-
+from ui.introUI import Ui_MainWindow as introui
 
 class UartReciever(QThread):
     def __init__(self,serial,queue_R,queue_ok):
@@ -34,23 +34,24 @@ class UartReciever(QThread):
                     print("not standard content:")
                     print(content)
     def stop(self):
-        self.run_read=False`
+        self.run_read=False
 
 
 class RunDesignerGUI():
     def __init__(self):
         app = QtWidgets.QApplication(sys.argv)
         
-        self.init_uart('COM6')
+        self.init_uart('COM5')
         
-        while(1): 
-            x=input()
-            if x[0]=="S":
-                resp=self.write_uart_wait_for_response("$SE!+989129459183,سلام و عرض ادب")
-                print(resp)
-                print('-----')
-            else:
-                print("khiyar")
+        # while(1):
+        #     x=input()
+        #     if x[0]=="S":
+        #         resp=self.write_uart_wait_for_response("$SE!+989129459183,سلام و عرض ادب")
+        #         print(resp)
+        #         print('-----')
+        #     else:
+        #         print("khiyar")
+        
         sys.exit(app.exec_())
     
     def init_uart(self,COMPORT):
