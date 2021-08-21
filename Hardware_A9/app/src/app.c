@@ -31,12 +31,12 @@ void Hi_scenario_timer(void* param){
     event=(API_Event_t *)OS_Malloc(sizeof(API_Event_t));
     event->id=API_EVENT_ID_UART_WRTIE;
     event->pParam1=(char *)OS_Malloc(sizeof("Hi"));
-    event->pParam2=(char *)OS_Malloc(NULL);
+    // event->pParam2=(char *)OS_Malloc(NULL);
     
     event->pParam1="Hi";
     OS_SendEvent(Handel.uartTaskHandle,(void*)event,OS_WAIT_FOREVER,OS_EVENT_PRI_NORMAL);
-    uart_sender("in timer");
-    OS_StartCallbackTimer(Handel.mainTaskHandle,3*1000,Hi_scenario_timer,NULL);
+    // uart_sender("in timer");
+    OS_StartCallbackTimer(Handel.mainTaskHandle,5*1000,Hi_scenario_timer,NULL);
 }
 
 void Stop_Hi_scenario_timer(void* param){
@@ -44,12 +44,12 @@ void Stop_Hi_scenario_timer(void* param){
     event=(API_Event_t *)OS_Malloc(sizeof(API_Event_t));
     event->id=API_EVENT_ID_UART_WRTIE;
     event->pParam1=(char *)OS_Malloc(sizeof("who"));
-    event->pParam2=(char *)OS_Malloc(NULL);
+    // event->pParam2=(char *)OS_Malloc(NULL);
     
     event->pParam1="who";
     OS_SendEvent(Handel.uartTaskHandle,(void*)event,OS_WAIT_FOREVER,OS_EVENT_PRI_NORMAL);
-    uart_sender("in timer");
-    OS_StartCallbackTimer(Handel.mainTaskHandle,3*1000,Stop_Hi_scenario_timer,NULL);
+    // uart_sender("in timer");
+    OS_StartCallbackTimer(Handel.mainTaskHandle,5*1000,Stop_Hi_scenario_timer,NULL);
 }
 
 void MainEventDispatch(API_Event_t* pEvent)
@@ -104,10 +104,10 @@ void MainTask(void *pData)
     //     NULL, NULL, TEST_TASK_STACK_SIZE, TEST_TASK_PRIORITY, 0, 0, "GPIO Test Task");
     
     Handel.uartTaskHandle = OS_CreateTask(UART_TestTask,
-        (void *)&Handel, NULL, MAIN_TASK_STACK_SIZE*7, TEST_TASK_PRIORITY, 0, 0, "UART Test Task");
+        (void *)&Handel, NULL, MAIN_TASK_STACK_SIZE*7.75, TEST_TASK_PRIORITY, 0, 0, "UART Test Task");
 
     Handel.smsTaskHandle= OS_CreateTask(SMS_TestTask,
-        (void *)&Handel, NULL, MAIN_TASK_STACK_SIZE*7, TEST_TASK_PRIORITY, 0, 0, "sms Test Task");
+        (void *)&Handel, NULL, MAIN_TASK_STACK_SIZE*7.75, TEST_TASK_PRIORITY, 0, 0, "sms Test Task");
   
     while(1)
     {
@@ -125,6 +125,6 @@ void MainTask(void *pData)
 void app_Main()
 {
     Handel.mainTaskHandle = OS_CreateTask(MainTask ,
-        NULL, NULL, MAIN_TASK_STACK_SIZE*7.5, MAIN_TASK_PRIORITY, 0, 0, MAIN_TASK_NAME);
+        NULL, NULL, MAIN_TASK_STACK_SIZE*7.75, MAIN_TASK_PRIORITY, 0, 0, MAIN_TASK_NAME);
     OS_SetUserMainHandle(&Handel.mainTaskHandle);
 }

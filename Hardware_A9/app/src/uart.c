@@ -46,10 +46,26 @@ void SEN_response(uint8_t data[],Task_Handels * pData){
     event->id=API_EVENT_ID_SEND_SMS;
     event->pParam1=(uint8_t *)OS_Malloc(Len-19);//used for content
     event->pParam2=(uint8_t *)OS_Malloc(13);//used for phone number
-
-    memcpy(event->pParam1 ,data+5, 13);
-    memcpy(event->pParam2 ,data+19, Len-19);
+    
+    memcpy(event->pParam1 ,data+19, Len-19);
+    memcpy(event->pParam2 ,data+5, 13);
+    event->param2=Len-19-1;
+    
     OS_SendEvent(pData->smsTaskHandle,(void*)event,OS_WAIT_FOREVER,OS_EVENT_PRI_NORMAL);
+}
+VSE_response(uint8_t data[],Task_Handels * pData){
+    API_Event_t* event=NULL;
+    uint8_t Len = strlen(data);
+    event=(API_Event_t *)OS_Malloc(sizeof(API_Event_t));
+    event->id=API_EVENT_ID_VALIDATE_SMS;
+    event->pParam1=(uint8_t *)OS_Malloc(Len-5);
+    event->pParam2=(uint8_t *)OS_Malloc(NULL);
+    
+    memcpy(event->pParam1 ,data+5, Len-5);
+    event->param2=Len-5;
+    
+    OS_SendEvent(pData->smsTaskHandle,(void*)event,OS_WAIT_FOREVER,OS_EVENT_PRI_NORMAL);
+
 }
 
 void uart1DataParser(API_Event_t* pEvent,Task_Handels * pData){
@@ -63,12 +79,16 @@ void uart1DataParser(API_Event_t* pEvent,Task_Handels * pData){
     else if (strncmp(data,"$WHO!",5)==0){
         WHO_response(data,pData);
     }
+    else if (strncmp(data,"$SEN!",5)==0){
+        SEN_response(data,pData);
+    }
+    else if (strncmp(data,"$VSE!",5)==0){
+        VSE_response(data,pData);
+    } 
     else{
         uart_sender("khiyar");
     }
-    // else if (strncmp(data,"$SEN!",5)==0){
-    //    SEN_response(data,pData);
-    // }    
+    
 
 }
 

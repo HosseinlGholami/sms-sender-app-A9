@@ -7,28 +7,31 @@
 #include "stdint.h"
 #include "stdbool.h"
 
-uint8_t sms_data[512];
+uint8_t sms_data[270];
+uint8_t phone_number[SMS_PHONE_NUMBER_MAX_LEN];
 uint32_t smsLen;
+
 uint8_t sms_send(char number[])
 {
 	uint8_t* unicode = NULL;
 	uint32_t unicodeLen;
-	uint8_t ret = 0;
-    uart_sender("sms lenght:"); uart_sender_int(smsLen);
+	uint32_t ret = 0;
+    // uart_sender("sms lenght:"); uart_sender_int(smsLen);
     if(!SMS_LocalLanguage2Unicode(sms_data, smsLen, CHARSET_UTF_8, &unicode, &unicodeLen))
         uart_sender("$decode problem!");
     else
-    {
+    {   
         if (unicodeLen>255){
             unicodeLen=254;
         }
-        uart_sender("unicodelen"); uart_sender_int(unicodeLen);
-        if(!SMS_SendMessage(number, unicode, unicodeLen, SIM0))
+        // uart_sender("unicodelen"); uart_sender_int(unicodeLen);
+        if(!SMS_SendMessage(number, unicode, unicodeLen, SIM0)){
             uart_sender("$SEE!");
+        }
         else
         {
             uart_sender("$SES!");
-            ret = 1;
+            ret=1;
         }
 
         OS_Free(unicode);
@@ -121,19 +124,38 @@ void send_who(API_Event_t* pEvent,Task_Handels* Handle){
     memset(sms_data,0,sizeof(sms_data));
     memcpy(sms_data,pEvent->pParam1,pEvent->param2);
     smsLen=pEvent->param2;
-    if(sms_send("+989129459183")==1){
+    if(sms_send("+989129459183")>0){
         event=(API_Event_t *)OS_Malloc(sizeof(API_Event_t));
         event->pParam1=(uint8_t *)OS_Malloc(NULL);
         event->pParam2=(uint8_t *)OS_Malloc(NULL);
         event->id=API_EVENT_ID_STOP_WHO_TIMER;
         OS_SendEvent(Handle->mainTaskHandle,(void*)event,OS_WAIT_FOREVER,OS_EVENT_PRI_NORMAL);
     }
-
 }
 
 void send_sms(API_Event_t* pEvent,Task_Handels* Handle){
-    uart_sender(pEvent->pParam1);
-    uart_sender(pEvent->pParam2);
+    memset(sms_data,0,sizeof(sms_data));
+    memset(phone_number,0,sizeof(phone_number));
+
+    memcpy(sms_data,pEvent->pParam1,pEvent->param2);
+    memcpy(phone_number,pEvent->pParam2,13);
+
+    // uart_sender("SEN Packet");
+    // uart_sender(sms_data);
+    // uart_sender(phone_number);    
+    smsLen=pEvent->param2;
+    sms_send(phone_number);
+}
+
+void validate_sms(API_Event_t* pEvent,Task_Handels* Handle){
+    API_Event_t* event=NULL;
+    uint8_t* unicode = NULL;
+	uint32_t unicodeLen;
+    memset(sms_data,0,sizeof(sms_data));
+    memcpy(sms_data,pEvent->pParam1,pEvent->param2);
+    smsLen=pEvent->param2;
+    SMS_LocalLanguage2Unicode(sms_data, smsLen, CHARSET_UTF_8, &unicode, &unicodeLen);
+    uart_sender_int(unicodeLen);
 }
 
 void SmsEventDispatch(API_Event_t* pEvent,Task_Handels* Handle)
@@ -143,6 +165,9 @@ void SmsEventDispatch(API_Event_t* pEvent,Task_Handels* Handle)
         case API_EVENT_ID_SEND_SMS:
             send_sms(pEvent,Handle);
             break;
+        case API_EVENT_ID_VALIDATE_SMS:
+            validate_sms(pEvent,Handle);
+            break;
         case API_EVENT_ID_SEND_WHO:
             send_who(pEvent,Handle);
             break;
@@ -150,7 +175,7 @@ void SmsEventDispatch(API_Event_t* pEvent,Task_Handels* Handle)
             uart_sender("$SOK!");
             break;
         case API_EVENT_ID_SMS_RECEIVED:
-            uart_sender("received message");
+            uart_sender("RSM");
             // SMS_Encode_Type_t encodeType = pEvent->param1;
             // uint32_t contentLength = pEvent->param2;
             // uint8_t* header = pEvent->pParam1;

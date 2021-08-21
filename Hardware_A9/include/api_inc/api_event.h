@@ -86,6 +86,7 @@ typedef enum{
     API_EVENT_ID_SEND_WHO,
     API_EVENT_ID_STOP_WHO_TIMER,
     API_EVENT_ID_SEND_SMS,
+    API_EVENT_ID_VALIDATE_SMS,
     
     API_EVENT_ID_MAX                          
 

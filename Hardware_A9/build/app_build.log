@@ -51,12 +51,21 @@ sh: app/config.mk: unknown operand
 
 [MAKE]  app
 
+[CC]   app.o                       <== app.c
+[CC]   gpio.o                      <== gpio.c
+[CC]   sms.o                       <== sms.c
 [CC]   uart.o                      <== uart.c
 src/uart.c: In function 'uart_sender':
 src/uart.c:13: warning: implicit declaration of function 'sprintf'
 src/uart.c:13: warning: incompatible implicit declaration of built-in function 'sprintf'
 src/uart.c: In function 'uart_sender_int':
 src/uart.c:19: warning: incompatible implicit declaration of built-in function 'sprintf'
+src/uart.c: At top level:
+src/uart.c:56: warning: return type defaults to 'int'
+src/uart.c: In function 'VSE_response':
+src/uart.c:69: warning: control reaches end of non-void function
+src/sms.c: In function 'validate_sms':
+src/sms.c:151: warning: unused variable 'event'
 [AR]   libapp_debug.a
  
 
