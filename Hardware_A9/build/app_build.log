@@ -51,13 +51,12 @@ sh: app/config.mk: unknown operand
 
 [MAKE]  app
 
-[CC]   app.o                       <== app.c
 [CC]   uart.o                      <== uart.c
 src/uart.c: In function 'uart_sender':
-src/uart.c:17: warning: implicit declaration of function 'sprintf'
-src/uart.c:17: warning: incompatible implicit declaration of built-in function 'sprintf'
+src/uart.c:13: warning: implicit declaration of function 'sprintf'
+src/uart.c:13: warning: incompatible implicit declaration of built-in function 'sprintf'
 src/uart.c: In function 'uart_sender_int':
-src/uart.c:23: warning: incompatible implicit declaration of built-in function 'sprintf'
+src/uart.c:19: warning: incompatible implicit declaration of built-in function 'sprintf'
 [AR]   libapp_debug.a
  
 
@@ -76,7 +75,6 @@ src/uart.c:23: warning: incompatible implicit declaration of built-in function '
 [GEN]               strip platform symbol
                     |
                      --C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/platform/compilation/platform_symbols_to_strip
-mips-elf-ld.exe: hex/app/app.elf: access beyond end of merged section (-99877536)
 
 [SREC]              app.srec for flash/romulator
 sh: app/config.mk: unknown operand

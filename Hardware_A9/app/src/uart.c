@@ -7,10 +7,6 @@
 #include "stdbool.h"
 
 
-
-// #include "api_debug.h"
-
-
 void uart_sender(char data []){
     char buffer [100];
     memset(buffer,0,sizeof(buffer));
@@ -23,45 +19,73 @@ void uart_sender_int(int data ){
     sprintf(buffer,"%d\r\n",data);
     UART_Write(UART1,buffer,strlen(buffer));
 }
-
-
-void uart1DataParser(API_Event_t* pEvent){
-    // uint8_t data[pEvent->param2+1];
-    // uint8_t content[pEvent->param2-3];
-    // uint8_t phonenumber[SMS_PHONE_NUMBER_MAX_LEN];
-
-    // memset(data,0,sizeof(data));
-    // memset(content,0,sizeof(content));
-    // memset(phonenumber,0,sizeof(phonenumber));
-
-    // memcpy(data,pEvent->pParam1,pEvent->param2);   
-    // if (strncmp(data,"$SE!",4)==0){
-    //     pEvent->id=API_EVENT_ID_SET_BLINKING;
-    //     OS_SendEvent(gpioTaskHandle,pEvent,OS_WAIT_FOREVER,OS_EVENT_PRI_URGENT);
-    //     OS_Sleep(1);
-
-    //     memcpy(phonenumber,data+4,13);
-    //     memcpy(content,data+18,pEvent->param2-17);
+void HI_response(uint8_t data[],Task_Handels * pData){
+    API_Event_t* event=NULL;
+    event=(API_Event_t *)OS_Malloc(sizeof(API_Event_t));
+    event->id=API_EVENT_ID_STOP_HI_TIMER;
+    OS_SendEvent(pData->mainTaskHandle,(void*)event,OS_WAIT_FOREVER,OS_EVENT_PRI_NORMAL);
+}
+void WHO_response(uint8_t data[],Task_Handels * pData){
+    API_Event_t* event=NULL;
+    uint8_t Len = strlen(data);
+    event=(API_Event_t *)OS_Malloc(sizeof(API_Event_t));
+    event->id=API_EVENT_ID_SEND_WHO;
+    event->pParam1=(uint8_t *)OS_Malloc(Len-5);
+    event->pParam2=(uint8_t *)OS_Malloc(NULL);
     
-    //     sms_send(phonenumber,content);
-    // }
-    // else{
+    memcpy(event->pParam1 ,data+5, Len-5);
+    event->param2=Len-5;
+    
+    OS_SendEvent(pData->smsTaskHandle,(void*)event,OS_WAIT_FOREVER,OS_EVENT_PRI_NORMAL);
+
+}
+void SEN_response(uint8_t data[],Task_Handels * pData){
+    API_Event_t* event=NULL;
+    uint8_t Len = strlen(data);
+    event=(API_Event_t *)OS_Malloc(sizeof(API_Event_t));
+    event->id=API_EVENT_ID_SEND_SMS;
+    event->pParam1=(uint8_t *)OS_Malloc(Len-19);//used for content
+    event->pParam2=(uint8_t *)OS_Malloc(13);//used for phone number
+
+    memcpy(event->pParam1 ,data+5, 13);
+    memcpy(event->pParam2 ,data+19, Len-19);
+    OS_SendEvent(pData->smsTaskHandle,(void*)event,OS_WAIT_FOREVER,OS_EVENT_PRI_NORMAL);
+}
+
+void uart1DataParser(API_Event_t* pEvent,Task_Handels * pData){
+    uint8_t data[pEvent->param2+1];
+    memset(data,0,sizeof(data));
+    memcpy(data,pEvent->pParam1,pEvent->param2);  
+
+    if (strncmp(data,"$HI!",4)==0){
+        HI_response(data,pData);
+    }
+    else if (strncmp(data,"$WHO!",5)==0){
+        WHO_response(data,pData);
+    }
+    else{
         uart_sender("khiyar");
-    // }
+    }
+    // else if (strncmp(data,"$SEN!",5)==0){
+    //    SEN_response(data,pData);
+    // }    
 
 }
 
-static void UartEventDispatch(API_Event_t* pEvent)
+
+static void UartEventDispatch(API_Event_t* pEvent,Task_Handels * pData)
 {
     switch(pEvent->id)
     {
         case API_EVENT_ID_UART_RECEIVED:
             if(pEvent->param1 == UART1)
-            {
-                uart1DataParser(pEvent);
-            }
+                uart1DataParser(pEvent,pData);
+            break;
+        case API_EVENT_ID_UART_WRTIE:
+                uart_sender((char *) pEvent->pParam1);
             break;
         default:
+            uart_sender("Han");
             break;
     }
 }
@@ -83,12 +107,9 @@ void UART_TestTask(void* pData){
 
     while(1)
     {
-        OS_Sleep(100);
-        if(OS_WaitEvent(Handle->uartTaskHandle,(void *) &event, OS_TIME_OUT_WAIT_FOREVER))
+        if(OS_WaitEvent(Handle->uartTaskHandle,(void**)&event, OS_TIME_OUT_WAIT_FOREVER))
         {
-            
-            UartEventDispatch(event);
-
+            UartEventDispatch(event,Handle);
             OS_Free(event->pParam1);
             OS_Free(event->pParam2);
             OS_Free(event);

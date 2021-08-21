@@ -80,7 +80,13 @@ typedef enum{
     //hossein 
     API_EVENT_ID_SET_BLINKING,
     API_EVENT_ID_RESET_BLINKING,
-
+    
+    API_EVENT_ID_UART_WRTIE,
+    API_EVENT_ID_STOP_HI_TIMER,
+    API_EVENT_ID_SEND_WHO,
+    API_EVENT_ID_STOP_WHO_TIMER,
+    API_EVENT_ID_SEND_SMS,
+    
     API_EVENT_ID_MAX                          
 
 }API_Event_ID_t;
