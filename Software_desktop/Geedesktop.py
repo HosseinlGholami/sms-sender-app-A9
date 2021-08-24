@@ -66,7 +66,6 @@ class RunDesignerGUI():
         response=False
         tries=0
         while(not response):
-            
             try:
                 response=self.Queue_R.get(block=True, timeout=3)
                 break

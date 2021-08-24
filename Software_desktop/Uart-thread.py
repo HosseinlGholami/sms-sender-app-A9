@@ -13,13 +13,14 @@ def sender(ser):
         i=i+1
         
 def receiver(ser):
+    print("khiyar")
     while(1):
         content=ser.readlines()
         if (content):
             print(content)
 
 if __name__ == "__main__":
-    serial = serial.Serial('COM10', 115200, timeout=0)
+    serial = serial.Serial('COM5', 115200, timeout=0)
     with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
         executor.submit(receiver , serial)
         executor.submit(sender, serial)
