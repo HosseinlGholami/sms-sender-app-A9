@@ -70,13 +70,12 @@ class RunDesignerGUI():
     
     def receive_valid_comport(self,txt):
         self.COMPORT=txt
-        print("fuckkkkkkkkkkkkkaaaaaaaaaaaaHGGGGGG"+self.COMPORT)  
           
     def Finish_search_thread(self):
         self.comport_search_thread.stop()
-        # self.introWindow.hide()
-        # self.testWindow.show()
-        # print("fuckkkkkkkkkkkkk"+self.COMPORT)            
+        self.introWindow.hide()
+        self.testWindow.show()
+        print("We have the"+self.COMPORT)            
     
     
     def send_log(self,txt):

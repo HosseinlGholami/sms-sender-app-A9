@@ -59,13 +59,11 @@ class ComPortSearch(QThread):
             self.signals.progress.emit(f"check COM port: {list_of_ports[port_index]}")
             self.init_uart(list_of_ports[port_index])
             try:
-                print(f" iiiii -->{list_of_ports[port_index]}")
                 response=self.Queue.get(block=True, timeout=7)
                 if 'Hi' in response:
                     init_done=True
                     self.signals.Valid_comport.emit(list_of_ports[port_index])
                     break
-                print(f"exeption andakhtam")
                 raise Exception
             except:
                 port_index+=1
@@ -77,15 +75,12 @@ class ComPortSearch(QThread):
                     self.signals.progress.emit("================================")
                     init_done=False
                     break
-        print(f"ghable init doen chekc")
         if init_done:
-            self.signals.progress.emit("Port Finded")
             if (self.write_uart_wait_for_response("$HI!",-1,"who")):
                 print("send hi is fine and he say who")
             if (self.write_uart_wait_for_response(f"$WHO!{getSystemInfo()}",-1,"$SES!")):
                 print("He sends Who")
             self.signals.finished.emit()
-        print("--end--")
             
     def init_uart(self,COMPORT):
         self.serial = serial.Serial(COMPORT, 115200, timeout=0)
