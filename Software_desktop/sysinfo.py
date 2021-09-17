@@ -15,8 +15,3 @@ def getSystemInfo():
         return json.dumps(info)
     except:
         pass
-
-a=json.loads(getSystemInfo())
-print(a)
-
-b='سلام بر شما عزیزان دلم که همواره در راستای اعتلای فردی دست به هنرمنمایی کرده و در این راه وقت صرف میکنید'
