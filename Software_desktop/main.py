@@ -4,9 +4,7 @@ from PyQt5.QtWidgets import QWidget
 
 import numpy as np
 import time
-import serial
-import serial.tools.list_ports
-import queue
+
 from PyQt5 import QtWidgets,QtGui
 from PyQt5.QtCore import Qt
 import sys
@@ -17,7 +15,8 @@ import threading
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
-from Util import *
+from Search_comport import *
+from send_sms import send_message
 
 
 ################
@@ -39,26 +38,56 @@ class RunDesignerGUI():
         self.tstui = test_MainWindow()
         self.tstui.setupUi(self.testWindow )
         
+        self.widget_update()
         self.widget_action()
         
-        self.testWindow.hide()
-        self.introWindow.show()
+        #just for test
+        # self.testWindow.hide()
+        # self.introWindow.show()
+        self.testWindow.show()
+        
         sys.exit(app.exec_())
+    def widget_update(self):
+        self.tstui.Login_Button_3.setEnabled(False)
+        self.tstui.Login_Button_2.setEnabled(False)
         
     def widget_action(self):
         self.intui.searchButton.clicked.connect(self.th_search_comport_function)
         self.tstui.Login_Button.clicked.connect(self.check_validity)
-        
+        self.tstui.Login_Button_2.clicked.connect(self.send_test_sms)
+        self.tstui.Login_Button_3.clicked.connect(self.go_for_all)
     
     def check_validity(self):
         self.sms_text=self.tstui.plainTextEdit.toPlainText()
-        print(self.sms_text)
-        print(type(self.sms_text))
+        
         if len(self.sms_text)<250:
             self.tstui.label_2.setText("IS valid")
+            self.tstui.Login_Button_2.setEnabled(True)
+            send_log("your messege is valid")
         else:
             self.tstui.label_2.setText("NOT valid ")
-
+            self.tstui.Login_Button_2.setEnabled(False)
+            self.tstui.Login_Button_3.setEnabled(False)
+            send_log("reduce the lenght of the messege")
+    def send_test_sms(self):
+        tst_numer=self.tstui.lineEdit_2.text()
+        status=send_message(tst_numer,self.sms_text,self.COMPORT)
+        if   status ==1:
+            send_log("messege sends to device ok")
+        elif status ==2:
+            send_log("messege sends to device Fail try agin ...")
+        elif status ==3:
+            send_log("messege sends to client success")
+        elif status ==4:
+            send_log("messege sends to client Fail")
+        elif status ==5:
+            send_log("messege deliverd to client")
+            
+        # self.tstui.Login_Button_3.setEnabled(True)
+    
+    def go_for_all(self):
+        print("go for all")
+        self.testWindow.hide()
     
     def th_search_comport_function(self):
         self.search_Signal=SearchSignals()
@@ -69,7 +98,8 @@ class RunDesignerGUI():
         self.comport_search_thread.start()
     
     def receive_valid_comport(self,txt):
-        self.COMPORT=txt
+        if self.COMPORT=="":
+            self.COMPORT=txt
           
     def Finish_search_thread(self):
         self.comport_search_thread.stop()
