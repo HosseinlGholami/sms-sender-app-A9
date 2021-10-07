@@ -39,6 +39,9 @@ C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/obj/debug/app
  C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/include/api_debug.h \
  C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/include/sdk_init.h \
  C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/include/api_hal_pm.h \
+ C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/include/api_hal_gpio.h \
+ C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/include/api_hal_uart.h \
+ C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/include/api_sms.h \
  include/app.h
 
 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/include/api_os.h:
@@ -118,5 +121,11 @@ C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/include/api_debug.h:
 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/include/sdk_init.h:
 
 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/include/api_hal_pm.h:
+
+C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/include/api_hal_gpio.h:
+
+C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/include/api_hal_uart.h:
+
+C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/include/api_sms.h:
 
 include/app.h:

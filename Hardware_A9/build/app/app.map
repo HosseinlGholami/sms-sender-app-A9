@@ -4,18 +4,14 @@ C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/init/lib\libinit_
                               (user_Main)
 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
                               C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/init/lib\libinit_debug.a(sdk_init.o) (app_Main)
-C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o)
-                              C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o) (SMS_TestTask)
-C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(uart.o)
-                              C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o) (uart_sender_int)
 
 Allocating common symbols
 Common symbol       size              file
 
 temp000___          0x4               C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/init/lib\libinit_debug.a(sdk_init.o)
-sms_data            0x10e             C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o)
-phone_number        0x15              C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o)
-smsLen              0x4               C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o)
+sms_data            0x10e             C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
+phone_number        0x15              C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
+smsLen              0x4               C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
 
 Discarded input sections
 
@@ -27,17 +23,7 @@ Discarded input sections
  .data          0x0000000000000000        0x0 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
  .bss           0x0000000000000000        0x0 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
  .reginfo       0x0000000000000000       0x18 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
- .pdr           0x0000000000000000       0xa0 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
- .text          0x0000000000000000        0x0 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o)
- .data          0x0000000000000000        0x0 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o)
- .bss           0x0000000000000000        0x0 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o)
- .reginfo       0x0000000000000000       0x18 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o)
- .pdr           0x0000000000000000      0x100 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o)
- .text          0x0000000000000000        0x0 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(uart.o)
- .data          0x0000000000000000        0x0 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(uart.o)
- .bss           0x0000000000000000        0x0 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(uart.o)
- .reginfo       0x0000000000000000       0x18 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(uart.o)
- .pdr           0x0000000000000000      0x100 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(uart.o)
+ .pdr           0x0000000000000000      0x280 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
 
 Memory Configuration
 
@@ -56,7 +42,7 @@ LOAD C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/platform/chip/rom/8955
                 0xffffffff88240010                . = ALIGN (0x10)
  *fill*         0xffffffff88240008        0x8 00
 
-.cust_rotext    0xffffffff88240010      0xa90
+.cust_rotext    0xffffffff88240010      0x9b0
  *(.text)
  *(.text.*)
  .text.user_Main
@@ -65,100 +51,89 @@ LOAD C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/platform/chip/rom/8955
  .text.user_Init
                 0xffffffff8824002c       0x48 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/init/lib\libinit_debug.a(sdk_init.o)
                 0xffffffff8824002d                user_Init
- .text.Hi_scenario_timer
-                0xffffffff88240074       0x64 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
-                0xffffffff88240075                Hi_scenario_timer
- .text.Stop_Hi_scenario_timer
-                0xffffffff882400d8       0x64 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
-                0xffffffff882400d9                Stop_Hi_scenario_timer
- .text.MainEventDispatch
-                0xffffffff8824013c       0xd4 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
-                0xffffffff8824013d                MainEventDispatch
- .text.MainTask
-                0xffffffff88240210       0xa0 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
-                0xffffffff88240211                MainTask
+ .text.init_all
+                0xffffffff88240074       0xb8 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
+                0xffffffff88240075                init_all
  .text.app_Main
-                0xffffffff882402b0       0x48 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
-                0xffffffff882402b1                app_Main
- .text.sms_clearAll
-                0xffffffff882402f8       0xc4 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o)
-                0xffffffff882402f9                sms_clearAll
- .text.SMSInit  0xffffffff882403bc       0x60 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o)
-                0xffffffff882403bd                SMSInit
- .text.sms_send
-                0xffffffff8824041c       0x90 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o)
-                0xffffffff8824041d                sms_send
- .text.send_sms
-                0xffffffff882404ac       0x64 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o)
-                0xffffffff882404ad                send_sms
- .text.send_who
-                0xffffffff88240510       0x88 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o)
-                0xffffffff88240511                send_who
- .text.validate_sms
-                0xffffffff88240598       0x64 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o)
-                0xffffffff88240599                validate_sms
- .text.SmsEventDispatch
-                0xffffffff882405fc       0x90 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o)
-                0xffffffff882405fd                SmsEventDispatch
- .text.SMS_TestTask
-                0xffffffff8824068c       0x50 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o)
-                0xffffffff8824068d                SMS_TestTask
- .text.HI_response
-                0xffffffff882406dc       0x38 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(uart.o)
-                0xffffffff882406dd                HI_response
+                0xffffffff8824012c       0x48 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
+                0xffffffff8824012d                app_Main
  .text.VSE_response
-                0xffffffff88240714       0x78 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(uart.o)
-                0xffffffff88240715                VSE_response
+                0xffffffff88240174       0x78 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
+                0xffffffff88240175                VSE_response
  .text.SEN_response
-                0xffffffff8824078c       0x88 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(uart.o)
-                0xffffffff8824078d                SEN_response
+                0xffffffff882401ec       0x8c C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
+                0xffffffff882401ed                SEN_response
  .text.WHO_response
-                0xffffffff88240814       0x78 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(uart.o)
-                0xffffffff88240815                WHO_response
+                0xffffffff88240278       0x78 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
+                0xffffffff88240279                WHO_response
  .text.uart_sender_int
-                0xffffffff8824088c       0x48 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(uart.o)
-                0xffffffff8824088d                uart_sender_int
+                0xffffffff882402f0       0x48 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
+                0xffffffff882402f1                uart_sender_int
+ .text.validate_sms
+                0xffffffff88240338       0x64 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
+                0xffffffff88240339                validate_sms
  .text.uart_sender
-                0xffffffff882408d4       0x48 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(uart.o)
-                0xffffffff882408d5                uart_sender
- .text.uart1DataParser
-                0xffffffff8824091c       0xc0 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(uart.o)
-                0xffffffff8824091d                uart1DataParser
- .text.UART_TestTask
-                0xffffffff882409dc       0xbc C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(uart.o)
-                0xffffffff882409dd                UART_TestTask
+                0xffffffff8824039c       0x48 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
+                0xffffffff8824039d                uart_sender
+ .text.SMSInit  0xffffffff882403e4       0x60 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
+                0xffffffff882403e5                SMSInit
+ .text.sms_clearAll
+                0xffffffff88240444       0xc4 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
+                0xffffffff88240445                sms_clearAll
+ .text.sms_send
+                0xffffffff88240508       0x90 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
+                0xffffffff88240509                sms_send
+ .text.send_sms
+                0xffffffff88240598       0x64 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
+                0xffffffff88240599                send_sms
+ .text.send_who
+                0xffffffff882405fc       0x84 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
+                0xffffffff882405fd                send_who
+ .text.SmsEventDispatch
+                0xffffffff88240680       0x70 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
+                0xffffffff88240681                SmsEventDispatch
+ .text.SMS_TestTask
+                0xffffffff882406f0       0x50 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
+                0xffffffff882406f1                SMS_TestTask
+ .text.uartDataParser
+                0xffffffff88240740       0xf8 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
+                0xffffffff88240741                uartDataParser
+ .text.MainEventDispatch
+                0xffffffff88240838       0x90 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
+                0xffffffff88240839                MainEventDispatch
+ .text.MainTask
+                0xffffffff882408c8       0x7c C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
+                0xffffffff882408c9                MainTask
+ .text.Send_who_scenario_timer
+                0xffffffff88240944       0x38 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
+                0xffffffff88240945                Send_who_scenario_timer
+ .text.Send_Hi_scenario_timer
+                0xffffffff8824097c       0x38 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
+                0xffffffff8824097d                Send_Hi_scenario_timer
  *(.stub .gnu.linkonce.t.*)
-                0xffffffff88240aa0                . = ALIGN (0x20)
- *fill*         0xffffffff88240a98        0x8 00
+                0xffffffff882409c0                . = ALIGN (0x20)
+ *fill*         0xffffffff882409b4        0xc 00
 
-.cust_rodata    0xffffffff88240aa0      0x1a0
+.cust_rodata    0xffffffff882409c0      0x140
  *(.rdata)
  *(.rodata)
  *(.rodata.*)
  .rodata.str1.4
-                0xffffffff88240aa0       0x37 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
-                                         0x38 (size before relaxing)
- *fill*         0xffffffff88240ad7        0x1 00
- .rodata.str1.4
-                0xffffffff88240ad8      0x113 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o)
-                                        0x114 (size before relaxing)
- *fill*         0xffffffff88240beb        0x1 00
- .rodata.C.5.3590
-                0xffffffff88240bec        0x4 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o)
- .rodata.str1.4
-                0xffffffff88240bf0       0x3c C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(uart.o)
+                0xffffffff882409c0      0x130 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
+ .rodata.C.44.3845
+                0xffffffff88240af0        0x4 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
  *(.rodata.*_png)
  *(.gnu.linkonce.r.*)
  *(.rodata1)
  *(.roresdata)
  *(.robsdata)
-                0xffffffff88240c40                . = ALIGN (0x20)
- *fill*         0xffffffff88240c2c       0x14 00
-                0xffffffff88240c40                __user_rw_lma = .
-                0x0000000000000c40                __rom_size = (__user_rw_lma - __rom_start)
+                0xffffffff88240b00                . = ALIGN (0x20)
+ *fill*         0xffffffff88240af4        0xc 00
+                0xffffffff88240b00                __user_rw_lma = .
+                0x0000000000000b00                __rom_size = (__user_rw_lma - __rom_start)
                 0xffffffff82300000                . = 0xffffffff82300000
 
-.cust_data      0xffffffff82300000        0x0 load address 0xffffffff88240c40
+.cust_data      0xffffffff82300000        0x0 load address 0xffffffff88240b00
                 0xffffffff82300000                __user_rw_start = .
  *(.data)
  *(.data.*)
@@ -170,34 +145,36 @@ LOAD C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/platform/chip/rom/8955
                 0x0000000000000000                __user_rw_size = (__user_rw_end - __user_rw_start)
                 0xffffffff82300000                __user_bss_start = .
 
-.cust_bss       0xffffffff82300000      0x150
+.cust_bss       0xffffffff82300000      0x140
  *(.sbss .sbss.* .gnu.linkonce.sb.*)
  *(.sbss2 .sbss2.* .gnu.linkonce.sb2.*)
  *(.scommon)
  .scommon       0xffffffff82300000        0x4 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/init/lib\libinit_debug.a(sdk_init.o)
                 0xffffffff82300000                temp000___
- .scommon       0xffffffff82300004        0x4 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o)
+ .scommon       0xffffffff82300004        0x4 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
                 0xffffffff82300004                smsLen
  *(.dynbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
  .bss.g_InterfaceVtbl
                 0xffffffff82300008        0x4 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/init/lib\libinit_debug.a(sdk_init.o)
                 0xffffffff82300008                g_InterfaceVtbl
- .bss.Handel    0xffffffff8230000c       0x10 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
-                0xffffffff8230000c                Handel
  .bss.Network_stable
-                0xffffffff8230001c        0x1 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
-                0xffffffff8230001c                Network_stable
+                0xffffffff8230000c        0x1 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
+                0xffffffff8230000c                Network_stable
+ *fill*         0xffffffff8230000d        0x3 00
+ .bss.mainTaskHandle
+                0xffffffff82300010        0x4 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
+ .bss.smsTaskHandle
+                0xffffffff82300014        0x4 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
  *(COMMON)
- *fill*         0xffffffff8230001d        0x3 00
- COMMON         0xffffffff82300020      0x125 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o)
-                0xffffffff82300020                sms_data
-                0xffffffff82300130                phone_number
+ COMMON         0xffffffff82300018      0x125 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
+                0xffffffff82300018                sms_data
+                0xffffffff82300128                phone_number
  *(.rambss)
-                0xffffffff82300150                . = ALIGN (0x10)
- *fill*         0xffffffff82300145        0xb 00
-                0xffffffff82300150                __user_bss_end = .
-                0x0000000000000150                __user_bss_size = (__user_bss_end - __user_bss_start)
+                0xffffffff82300140                . = ALIGN (0x10)
+ *fill*         0xffffffff8230013d        0x3 00
+                0xffffffff82300140                __user_bss_end = .
+                0x0000000000000140                __user_bss_size = (__user_bss_end - __user_bss_start)
 
 .stab
  *(.stab)
@@ -223,8 +200,6 @@ LOAD C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/platform/chip/rom/8955
 .mdebug.abi32   0x0000000000000000        0x0
  .mdebug.abi32  0x0000000000000000        0x0 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/init/lib\libinit_debug.a(sdk_init.o)
  .mdebug.abi32  0x0000000000000000        0x0 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
- .mdebug.abi32  0x0000000000000000        0x0 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o)
- .mdebug.abi32  0x0000000000000000        0x0 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(uart.o)
 
 .gnu.attributes
                 0x0000000000000000       0x10
@@ -232,18 +207,12 @@ LOAD C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/platform/chip/rom/8955
                 0x0000000000000000       0x10 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/init/lib\libinit_debug.a(sdk_init.o)
  .gnu.attributes
                 0x0000000000000010       0x10 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
- .gnu.attributes
-                0x0000000000000020       0x10 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o)
- .gnu.attributes
-                0x0000000000000030       0x10 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(uart.o)
 
 .comment        0x0000000000000000       0x25
  *(.comment)
  .comment       0x0000000000000000       0x25 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/init/lib\libinit_debug.a(sdk_init.o)
                                          0x26 (size before relaxing)
  .comment       0x0000000000000000       0x26 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
- .comment       0x0000000000000000       0x26 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o)
- .comment       0x0000000000000000       0x26 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(uart.o)
 
 .debug
  *(.debug)
@@ -257,74 +226,52 @@ LOAD C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/platform/chip/rom/8955
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x0000000000000000      0x118
+.debug_aranges  0x0000000000000000       0xe0
  *(.debug_aranges)
  .debug_aranges
                 0x0000000000000000       0x28 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/init/lib\libinit_debug.a(sdk_init.o)
  .debug_aranges
-                0x0000000000000028       0x40 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
- .debug_aranges
-                0x0000000000000068       0x58 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o)
- .debug_aranges
-                0x00000000000000c0       0x58 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(uart.o)
+                0x0000000000000028       0xb8 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
 
 .debug_pubnames
-                0x0000000000000000      0x237
+                0x0000000000000000      0x1f8
  *(.debug_pubnames)
  .debug_pubnames
                 0x0000000000000000       0x51 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/init/lib\libinit_debug.a(sdk_init.o)
  .debug_pubnames
-                0x0000000000000051       0x91 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
- .debug_pubnames
-                0x00000000000000e2       0xb6 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o)
- .debug_pubnames
-                0x0000000000000198       0x9f C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(uart.o)
+                0x0000000000000051      0x1a7 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
 
-.debug_info     0x0000000000000000    0x154e7
+.debug_info     0x0000000000000000     0xabf5
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000     0x52cc C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/init/lib\libinit_debug.a(sdk_init.o)
- .debug_info    0x00000000000052cc     0x54ce C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
- .debug_info    0x000000000000a79a     0x56e7 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o)
- .debug_info    0x000000000000fe81     0x5666 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(uart.o)
+ .debug_info    0x00000000000052cc     0x5929 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
 
-.debug_abbrev   0x0000000000000000      0x9e6
+.debug_abbrev   0x0000000000000000      0x565
  *(.debug_abbrev)
  .debug_abbrev  0x0000000000000000      0x24b C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/init/lib\libinit_debug.a(sdk_init.o)
- .debug_abbrev  0x000000000000024b      0x24f C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
- .debug_abbrev  0x000000000000049a      0x2b1 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o)
- .debug_abbrev  0x000000000000074b      0x29b C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(uart.o)
+ .debug_abbrev  0x000000000000024b      0x31a C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
 
-.debug_line     0x0000000000000000      0xe53
+.debug_line     0x0000000000000000      0x832
  *(.debug_line)
  .debug_line    0x0000000000000000      0x2f3 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/init/lib\libinit_debug.a(sdk_init.o)
- .debug_line    0x00000000000002f3      0x37b C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
- .debug_line    0x000000000000066e      0x405 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o)
- .debug_line    0x0000000000000a73      0x3e0 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(uart.o)
+ .debug_line    0x00000000000002f3      0x53f C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
 
-.debug_frame    0x0000000000000000      0x308
+.debug_frame    0x0000000000000000      0x2a4
  *(.debug_frame)
  .debug_frame   0x0000000000000000       0x44 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/init/lib\libinit_debug.a(sdk_init.o)
- .debug_frame   0x0000000000000044       0xac C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
- .debug_frame   0x00000000000000f0      0x104 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o)
- .debug_frame   0x00000000000001f4      0x114 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(uart.o)
+ .debug_frame   0x0000000000000044      0x260 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
 
-.debug_str      0x0000000000000000     0x4da7
+.debug_str      0x0000000000000000     0x4d6e
  *(.debug_str)
  .debug_str     0x0000000000000000     0x4513 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/init/lib\libinit_debug.a(sdk_init.o)
                                        0x4727 (size before relaxing)
- .debug_str     0x0000000000004513      0x70b C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
-                                       0x4d5e (size before relaxing)
- .debug_str     0x0000000000004c1e       0xed C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o)
-                                       0x4de4 (size before relaxing)
- .debug_str     0x0000000000004d0b       0x9c C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(uart.o)
-                                       0x4d93 (size before relaxing)
+ .debug_str     0x0000000000004513      0x85b C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
+                                       0x4ea1 (size before relaxing)
 
-.debug_loc      0x0000000000000000      0x74c
+.debug_loc      0x0000000000000000      0x5b8
  *(.debug_loc)
  .debug_loc     0x0000000000000000       0x5c C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/init/lib\libinit_debug.a(sdk_init.o)
- .debug_loc     0x000000000000005c      0x12a C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
- .debug_loc     0x0000000000000186      0x322 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o)
- .debug_loc     0x00000000000004a8      0x2a4 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(uart.o)
+ .debug_loc     0x000000000000005c      0x55c C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -362,8 +309,6 @@ END GROUP
 LOAD C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/platform/lib/gcc/mips-elf/4.4.2\libgcc.a
 OUTPUT(C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app//app.elf elf32-littlemips)
 
-.debug_ranges   0x0000000000000000       0xf8
+.debug_ranges   0x0000000000000000       0xd0
  .debug_ranges  0x0000000000000000       0x20 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/init/lib\libinit_debug.a(sdk_init.o)
- .debug_ranges  0x0000000000000020       0x38 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
- .debug_ranges  0x0000000000000058       0x50 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(sms.o)
- .debug_ranges  0x00000000000000a8       0x50 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(uart.o)
+ .debug_ranges  0x0000000000000020       0xb0 C:/Users/hosse/OneDrive/Desktop/Geektori/Hardware_A9/build/app/app/lib\libapp_debug.a(app.o)
